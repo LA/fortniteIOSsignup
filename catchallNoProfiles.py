@@ -8,7 +8,7 @@
 #https://github.com/SL34K
 #00110001 00110011
 #00110000 00110011
-#00110001 00111000 
+#00110001 00111000
 #########################################
 import random, requests, names, bs4, json, datetime, time, string
 from bs4 import BeautifulSoup
@@ -16,10 +16,10 @@ from random import *
 signuppage = 'https://accounts.epicgames.com/register/doCustomRegister'
 signupurl = 'https://accounts.epicgames.com/register/doCustomRegister?productName=fortnite'
 murl = 'https://www.epicgames.com/fortnite/en-US/event/register'
-domain ='@ukcarts.co.uk'
+domain ='@hypezip.xyz'
 x = 0
 gendelay = 10 #only change if you want to change the delay between account gen
-errordelay = 60 #time to sleep after an error (seconds)
+errordelay = 10 #time to sleep after an error (seconds)
 def main():
     first = names.get_first_name()
     last = names.get_last_name()
@@ -61,19 +61,19 @@ def main():
         'productName':'fortnite',}
     test = sesh.post(signupurl,data=data)
     now = datetime.datetime.now()
-    print (now.strftime("%H:%M:%S:%f")+": "+username,email)
+    print(now.strftime("%H:%M:%S:%f")+": "+username,email)
     data = {'platform':"apple-iPhoneX"}
     post = sesh.post(murl, data=data)
-    success = json.loads(post.text)["registered"]
+    success = json.loads(post.text)['registered']
     if success == True:
         now = datetime.datetime.now()
-        print (now.strftime("%H:%M:%S:%f")+": Signed up for invite")
+        print(now.strftime("%H:%M:%S:%f")+": Signed up for invite")
         return email,username
     else:
         now = datetime.datetime.now()
-        print (now.strftime("%H:%M:%S:%f")+": Error signing up")
+        print(now.strftime("%H:%M:%S:%f")+": Error signing up")
 try:
-    signups = int(input ("How many times do you wish to signup?"))
+    signups = 1000
 except:
     print("Enter a whole number")
 while signups > x:
@@ -82,10 +82,10 @@ while signups > x:
         file = open('success.txt', 'a')
         file.write(email+':'+username+'\n')
         file.close()
-        x=+1
+        x=+1u
         time.sleep(gendelay)
     except:
-        print("Error")
+        print("Error", signups)
         time.sleep(errordelay)
 else:
     print("{} Accounts signed up".format(x))
