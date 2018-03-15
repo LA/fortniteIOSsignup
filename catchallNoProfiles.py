@@ -82,7 +82,7 @@ while signups > x:
         file = open('success.txt', 'a')
         file.write(email+':'+username+'\n')
         file.close()
-        x=+1u
+        x=+1
         time.sleep(gendelay)
     except:
         print("Error", signups)
